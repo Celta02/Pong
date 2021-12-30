@@ -4,9 +4,8 @@ namespace CeltaGames._Project._01_Scripts
 {
     public class BallStartShoot : MonoBehaviour
     {
-        [SerializeField] float _speed;
-        
         BallSideControl _sideControl;
+        BallSpeed _speed;
         Rigidbody _rigidbody;
         PlayerInput _controls;
         
@@ -15,6 +14,7 @@ namespace CeltaGames._Project._01_Scripts
         void Awake()
         {
             _sideControl = GetComponent<BallSideControl>();
+            _speed = GetComponent<BallSpeed>();
             _rigidbody = GetComponent<Rigidbody>();
             _controls = new PlayerInput();
         }
@@ -23,6 +23,7 @@ namespace CeltaGames._Project._01_Scripts
         {
             _controls.WASD.Shoot.performed += _ => Shoot(Paddle.Left);
             _controls.Arrows.Shoot.performed += _ => Shoot(Paddle.Right);
+            AllowToShoot();
         }
         void OnDisable() => _controls.Disable();
 
@@ -35,16 +36,15 @@ namespace CeltaGames._Project._01_Scripts
 
         void Shoot(Paddle side)
         {
-            Debug.Log("Shooting");
             if (!_canShoot) return;
             if (side != _sideControl.ControlSide) return;
-            Debug.Log("Ball shooted");
+
             int xDir = 0;
             if (side == Paddle.Left) xDir = 1;
             if (side == Paddle.Right) xDir = -1;
                 
-            var direction = new Vector3(Random.value * xDir, 0f, Random.Range(-1f,1f));
-            _rigidbody.velocity = direction * _speed;
+            var direction = new Vector3(Random.value * xDir, 0f, Random.Range(-1f,1f)).normalized;
+            _rigidbody.velocity = direction * _speed.InitialSpeed;
 
             _canShoot = false;
         }
