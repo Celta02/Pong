@@ -35,6 +35,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": ""Normalize(min=-1,max=1)"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""c35ab455-3f8f-4c2b-9cc8-850873463508"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +79,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""PaddleMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82564e82-3317-47c4-b47b-3ce7d12d3565"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -85,6 +105,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": ""Normalize(min=-1,max=1)"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""629b7b5d-10c2-46b7-85fb-52d3b0fee230"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -120,6 +149,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""PaddleMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f5bb7b7-30e6-4603-8f15-ef3848e92a4c"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -141,9 +181,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // WASD
         m_WASD = asset.FindActionMap("WASD", throwIfNotFound: true);
         m_WASD_PaddleMove = m_WASD.FindAction("PaddleMove", throwIfNotFound: true);
+        m_WASD_Shoot = m_WASD.FindAction("Shoot", throwIfNotFound: true);
         // Arrows
         m_Arrows = asset.FindActionMap("Arrows", throwIfNotFound: true);
         m_Arrows_PaddleMove = m_Arrows.FindAction("PaddleMove", throwIfNotFound: true);
+        m_Arrows_Shoot = m_Arrows.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,11 +246,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_WASD;
     private IWASDActions m_WASDActionsCallbackInterface;
     private readonly InputAction m_WASD_PaddleMove;
+    private readonly InputAction m_WASD_Shoot;
     public struct WASDActions
     {
         private @PlayerInput m_Wrapper;
         public WASDActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @PaddleMove => m_Wrapper.m_WASD_PaddleMove;
+        public InputAction @Shoot => m_Wrapper.m_WASD_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_WASD; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -221,6 +265,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PaddleMove.started -= m_Wrapper.m_WASDActionsCallbackInterface.OnPaddleMove;
                 @PaddleMove.performed -= m_Wrapper.m_WASDActionsCallbackInterface.OnPaddleMove;
                 @PaddleMove.canceled -= m_Wrapper.m_WASDActionsCallbackInterface.OnPaddleMove;
+                @Shoot.started -= m_Wrapper.m_WASDActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_WASDActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_WASDActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_WASDActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +275,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PaddleMove.started += instance.OnPaddleMove;
                 @PaddleMove.performed += instance.OnPaddleMove;
                 @PaddleMove.canceled += instance.OnPaddleMove;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -237,11 +287,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Arrows;
     private IArrowsActions m_ArrowsActionsCallbackInterface;
     private readonly InputAction m_Arrows_PaddleMove;
+    private readonly InputAction m_Arrows_Shoot;
     public struct ArrowsActions
     {
         private @PlayerInput m_Wrapper;
         public ArrowsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @PaddleMove => m_Wrapper.m_Arrows_PaddleMove;
+        public InputAction @Shoot => m_Wrapper.m_Arrows_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Arrows; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -254,6 +306,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PaddleMove.started -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnPaddleMove;
                 @PaddleMove.performed -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnPaddleMove;
                 @PaddleMove.canceled -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnPaddleMove;
+                @Shoot.started -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_ArrowsActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_ArrowsActionsCallbackInterface = instance;
             if (instance != null)
@@ -261,6 +316,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PaddleMove.started += instance.OnPaddleMove;
                 @PaddleMove.performed += instance.OnPaddleMove;
                 @PaddleMove.canceled += instance.OnPaddleMove;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -277,9 +335,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IWASDActions
     {
         void OnPaddleMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface IArrowsActions
     {
         void OnPaddleMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
