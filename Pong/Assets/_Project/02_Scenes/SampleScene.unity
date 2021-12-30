@@ -282,7 +282,7 @@ Transform:
   - {fileID: 2128792738}
   - {fileID: 2026727998}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703280925
 GameObject:
@@ -1197,8 +1197,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1764467101}
   - component: {fileID: 1764467100}
+  - component: {fileID: 1764467102}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: GameSystems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,6 +1234,19 @@ Transform:
   m_Father: {fileID: 1651777427}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764467102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764467099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24256f4404ca13345834df21d5568f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ball: {fileID: 2035690940}
 --- !u!1 &2026727997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _side: 1
   _scoreManager: {fileID: 1764467100}
+  _respawn: {fileID: 1764467102}
 --- !u!1 &2035690933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1496,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2035690941
 MonoBehaviour:
@@ -1753,3 +1768,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _side: 0
   _scoreManager: {fileID: 1764467100}
+  _respawn: {fileID: 1764467102}

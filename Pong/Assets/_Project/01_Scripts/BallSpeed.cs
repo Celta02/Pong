@@ -11,11 +11,7 @@ namespace CeltaGames._Project._01_Scripts
 
         public float InitialSpeed => _initialSpeed;
         public float CurrentSpeed => _currentSpeed;
-
-        void Awake()
-        {
-            _currentSpeed = _targetSpeed = _initialSpeed;
-        }
+        void Awake() => _currentSpeed = _targetSpeed = _initialSpeed;
         
         
     }
