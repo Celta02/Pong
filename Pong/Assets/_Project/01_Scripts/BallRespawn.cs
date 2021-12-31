@@ -34,6 +34,7 @@ namespace CeltaGames._Project._01_Scripts
             _rigidbody.velocity = Vector3.zero;
             _sideControl.GiveControlSide(sideThatStartsNewRound);
             _shoot.AllowToShoot();
+            _shoot.AIShoot(sideThatStartsNewRound);
             _gameManager.ResetTouches();
             _speed.ResetCurrentSpeed();
         }

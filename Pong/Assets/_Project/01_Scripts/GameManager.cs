@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
