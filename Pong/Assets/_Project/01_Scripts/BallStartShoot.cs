@@ -4,7 +4,7 @@ namespace CeltaGames._Project._01_Scripts
 {
     public class BallStartShoot : MonoBehaviour
     {
-        BallSideControl _sideControl;
+        [SerializeField] SideControl _sideControl;
         BallSpeed _speed;
         Rigidbody _rigidbody;
         PlayerInput _controls;
@@ -13,7 +13,6 @@ namespace CeltaGames._Project._01_Scripts
 
         void Awake()
         {
-            _sideControl = GetComponent<BallSideControl>();
             _speed = GetComponent<BallSpeed>();
             _rigidbody = GetComponent<Rigidbody>();
             _controls = new PlayerInput();

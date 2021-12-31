@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
-    public class BallSideControl : MonoBehaviour
+    public class SideControl : MonoBehaviour
     {
         Paddle _controlSide;
         public Paddle ControlSide => _controlSide;
 
-        void Start() => GiveRandomControlSide();
+        void Awake() => GiveRandomControlSide();
 
         void GiveRandomControlSide() => _controlSide = Random.value > 0.5 ? Paddle.Left : Paddle.Right;
 
