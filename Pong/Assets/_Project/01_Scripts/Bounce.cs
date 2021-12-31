@@ -19,12 +19,15 @@ namespace CeltaGames._Project._01_Scripts
 
         void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Paddle"))
-                _gameManager.Touch();
+            var isPaddle = collision.gameObject.CompareTag("Paddle");
+
+            if(isPaddle) _gameManager.Touch();
             
             var normal = collision.contacts[0].normal;
             var newDir = Vector3.Reflect(_rigidbody.velocity, normal).normalized;
-            newDir += new Vector3(newDir.x * _xBounceFactor, 0f, 0f);
+            
+            if(!isPaddle)  newDir += new Vector3(newDir.x * _xBounceFactor, 0f, 0f);
+            
             _rigidbody.velocity = newDir.normalized * _speed.CurrentSpeed;
             
         }
