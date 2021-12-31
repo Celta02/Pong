@@ -6,6 +6,8 @@ namespace CeltaGames._Project._01_Scripts
     {
         [Tooltip("This factor multiplies the X direction after Bounce. Allowing to have less occurrences of the ball hitting form barrier to barrier.")]
         [SerializeField] float _xBounceFactor = 1.15f;
+        [SerializeField] GameManager _gameManager;
+        
         Rigidbody _rigidbody;
         BallSpeed _speed;
 
@@ -17,6 +19,9 @@ namespace CeltaGames._Project._01_Scripts
 
         void OnCollisionEnter(Collision collision)
         {
+            if (collision.gameObject.CompareTag("Paddle"))
+                _gameManager.Touch();
+            
             var normal = collision.contacts[0].normal;
             var newDir = Vector3.Reflect(_rigidbody.velocity, normal).normalized;
             newDir += new Vector3(newDir.x * _xBounceFactor, 0f, 0f);

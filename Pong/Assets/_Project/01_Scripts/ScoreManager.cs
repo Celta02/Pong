@@ -1,12 +1,11 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
     public class ScoreManager : MonoBehaviour
     {
-        [SerializeField] int _pointsToVictory;
+        [SerializeField] int _pointsToVictory = 10;
         
         [SerializeField] TMP_Text _leftScoreText;
         [SerializeField] TMP_Text _rightScoreText;

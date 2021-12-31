@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 176875724}
   m_Layer: 7
   m_Name: Right Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 1579394108}
   m_Layer: 7
   m_Name: Left Paddle
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,6 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764467101}
+  - component: {fileID: 1764467103}
   - component: {fileID: 1764467100}
   - component: {fileID: 1764467102}
   m_Layer: 0
@@ -1217,7 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160f59a2771b443481161422096f697a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointsToVictory: 1
+  _pointsToVictory: 10
   _leftScoreText: {fileID: 2083775247}
   _rightScoreText: {fileID: 709642312}
 --- !u!4 &1764467101
@@ -1247,6 +1248,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ball: {fileID: 2035690940}
+--- !u!114 &1764467103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764467099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf434b8bbac944aa9d8dbddb812070dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: {fileID: 2035690942}
+  _touchesToIncreaseSpeed: 4
+  _speedIncrease: 1.1
 --- !u!1 &2026727997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _xBounceFactor: 1.15
+  _gameManager: {fileID: 1764467103}
 --- !u!114 &2035690942
 MonoBehaviour:
   m_ObjectHideFlags: 0

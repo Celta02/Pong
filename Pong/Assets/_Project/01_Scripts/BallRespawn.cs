@@ -9,6 +9,8 @@ namespace CeltaGames._Project._01_Scripts
         Rigidbody _rigidbody;
         BallSideControl _sideControl;
         BallStartShoot _shoot;
+        GameManager _gameManager;
+        BallSpeed _speed;
         
         Vector3 _startPosition;
 
@@ -17,6 +19,8 @@ namespace CeltaGames._Project._01_Scripts
             _sideControl = _ball.GetComponent<BallSideControl>();
             _shoot = _ball.GetComponent<BallStartShoot>();
             _rigidbody = _ball.GetComponent<Rigidbody>();
+            _speed = _ball.GetComponent<BallSpeed>();
+            _gameManager = GetComponent<GameManager>();
         }
 
         void Start() => _startPosition = _ball.position;
@@ -27,6 +31,8 @@ namespace CeltaGames._Project._01_Scripts
             _rigidbody.velocity = Vector3.zero;
             _sideControl.GiveControlSide(sideThatStartsNewRound);
             _shoot.AllowToShoot();
+            _gameManager.ResetTouches();
+            _speed.ResetCurrentSpeed();
         }
         
     }
