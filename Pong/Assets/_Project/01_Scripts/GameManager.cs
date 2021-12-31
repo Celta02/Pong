@@ -6,11 +6,17 @@ namespace CeltaGames._Project._01_Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] BallSpeed _speed;
+        [SerializeField] GameObject _ball;
+        [SerializeField] PlayerController _leftController;
+        [SerializeField] PlayerController _rightController;
 
 
         [SerializeField] int _touchesToIncreaseSpeed;
         [SerializeField] float _speedIncrease;
+        
+        
+        BallSpeed _speed;
+        BallStartShoot _shoot;
         
         //ScoreManager _scoreManager;
         SideControl _sideControl;
@@ -23,6 +29,8 @@ namespace CeltaGames._Project._01_Scripts
             //_scoreManager = GetComponent<ScoreManager>();
             _respawn = GetComponent<BallRespawn>();
             _sideControl = GetComponent<SideControl>();
+            _speed = _ball.GetComponent<BallSpeed>();
+            _shoot = _ball.GetComponent<BallStartShoot>();
         }
 
         void Start() => InitializeGame();
@@ -30,10 +38,14 @@ namespace CeltaGames._Project._01_Scripts
         void InitializeGame()
         {
            _respawn.Respawn(_sideControl.ControlSide);
-            
-            
+            StartGame();
         }
 
+        public void StartGame()
+        {
+            _shoot.SubscribeTo(_leftController);
+            _shoot.SubscribeTo(_rightController);
+        }
 
         public void Touch()
         {

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 176875720}
   - component: {fileID: 176875719}
   - component: {fileID: 176875724}
+  - component: {fileID: 176875725}
   m_Layer: 7
   m_Name: Right Paddle
   m_TagString: Paddle
@@ -245,11 +246,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 176875718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c45ea4e4511a414bab95d959db39c24, type: 3}
+  m_Script: {fileID: 11500000, guid: d17e1645a17a4172832fc67c0eb008e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _side: 1
-  _velocity: 500
+--- !u!114 &176875725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176875718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59a6b15b3353dd4385924f546ebbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &248306136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1113,7 @@ GameObject:
   - component: {fileID: 1579394104}
   - component: {fileID: 1579394103}
   - component: {fileID: 1579394108}
+  - component: {fileID: 1579394109}
   m_Layer: 7
   m_Name: Left Paddle
   m_TagString: Paddle
@@ -1210,11 +1222,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579394102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c45ea4e4511a414bab95d959db39c24, type: 3}
+  m_Script: {fileID: 11500000, guid: 710e39c399904592b7bbde208ad7550d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _side: 0
-  _velocity: 500
+--- !u!114 &1579394109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579394102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59a6b15b3353dd4385924f546ebbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1651777426
 GameObject:
   m_ObjectHideFlags: 0

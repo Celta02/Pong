@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
@@ -7,30 +8,26 @@ namespace CeltaGames._Project._01_Scripts
         [SerializeField] SideControl _sideControl;
         BallSpeed _speed;
         Rigidbody _rigidbody;
-        PlayerInput _controls;
-        
         bool _canShoot;
 
+        readonly List<PlayerController> _controllers = new List<PlayerController>();
+        
         void Awake()
         {
             _speed = GetComponent<BallSpeed>();
             _rigidbody = GetComponent<Rigidbody>();
-            _controls = new PlayerInput();
         }
-        void OnEnable() => _controls.Enable();
-        void Start()
-        {
-            _controls.WASD.Shoot.performed += _ => Shoot(Paddle.Left);
-            _controls.Arrows.Shoot.performed += _ => Shoot(Paddle.Right);
-            AllowToShoot();
-        }
-        void OnDisable() => _controls.Disable();
 
-        void OnDestroy()
+        public void SubscribeTo(PlayerController controller)
         {
-            if (_controls == null) return;
-            _controls.WASD.Shoot.performed -= _ => Shoot(Paddle.Left);
-            _controls.Arrows.Shoot.performed -= _ => Shoot(Paddle.Right);
+            controller.ControllerShoot += Shoot;
+            _controllers.Add(controller);
+        }
+
+        void OnDisable()
+        {
+            foreach (var controller in _controllers)
+                controller.ControllerShoot -= Shoot;
         }
 
         void Shoot(Paddle side)
@@ -47,8 +44,6 @@ namespace CeltaGames._Project._01_Scripts
 
             _canShoot = false;
         }
-        [ContextMenu("allow to Shoot")]
         public void AllowToShoot() => _canShoot = true;
-        
     }
 }
