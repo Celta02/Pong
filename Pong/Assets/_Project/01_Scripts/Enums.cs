@@ -6,4 +6,11 @@ namespace CeltaGames._Project._01_Scripts
         Left,
         Right
     }
+
+    public enum Controls
+    {
+        AiControl,
+        Wasd,
+        Arrows
+    }
 }
