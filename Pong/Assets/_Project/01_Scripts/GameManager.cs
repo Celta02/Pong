@@ -53,7 +53,7 @@ namespace CeltaGames._Project._01_Scripts
         }
 
         public void ResetTouches() => _numberOfTouches = 0;
-
+        
         public void QuitGame() => Application.Quit();
     }
 }
