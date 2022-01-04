@@ -5,6 +5,7 @@ namespace CeltaGames._Project._01_Scripts
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] GameObject _gameElements;
         [SerializeField] GameObject _ball;
         [SerializeField] GameObject _leftPaddle;
         [SerializeField] GameObject _rightPaddle;
@@ -33,26 +34,20 @@ namespace CeltaGames._Project._01_Scripts
             _speed = _ball.GetComponent<BallSpeed>();
             _shoot = _ball.GetComponent<BallStartShoot>();
         }
-
-        void Start() => InitializeGame();
-
-        void InitializeGame()
-        {
-            Time.timeScale = 0f;
-           _respawn.Respawn(_sideControl.ControlSide);
-        }
-
+        
         public void StartGame()
         {
-            AddController(true);
-            AddController(false);
+            _gameElements.SetActive(true);
+           _respawn.Respawn(_sideControl.ControlSide);
+           
+           AddController(true);
+           AddController(false);
 
             if (!TryGetComponent(out PlayerController leftController)) return;
             _shoot.SubscribeTo(leftController);
             if (!TryGetComponent(out PlayerController rightController)) return;
             _shoot.SubscribeTo(rightController);
 
-            Time.timeScale = 1f;
             Debug.Log($"Timescale is {Time.timeScale}");
         }
 

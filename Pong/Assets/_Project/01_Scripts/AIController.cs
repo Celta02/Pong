@@ -1,13 +1,17 @@
+using System;
 using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
     public class AIController : GameController
     {
-        [SerializeField] Transform _ball;
-        [SerializeField] float _controllerDeadZone = 0.5f;
+        Transform _ball;
 
         float _verticalRelativePosition;
+        
+        readonly float _controllerDeadZone = 0.5f;
+
+        void Start() => _ball = GameObject.FindGameObjectWithTag("Ball").transform;
 
         void Update()
         {
