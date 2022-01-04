@@ -27,6 +27,7 @@ namespace CeltaGames._Project._01_Scripts
 
         public void SubscribeTo(PlayerController controller)
         {
+            if (!controller) return;
             controller.ControllerShoot += Shoot;
             _controllers.Add(controller);
         }

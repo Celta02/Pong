@@ -22,14 +22,14 @@ namespace CeltaGames._Project._01_Scripts
         [SerializeField] GameObject _wasdArrow;
         [SerializeField] GameObject _arrowsArrow;
 
+        [SerializeField] GameManager _gameManager;
+        
         Paddle _currentSubmenuSide;
 
         readonly Dictionary<Controls, GameObject> _leftSelections = new Dictionary<Controls, GameObject>();
         readonly Dictionary<Controls, GameObject> _rightSelections = new Dictionary<Controls, GameObject>();
         readonly Dictionary<Controls, GameObject> _arrows = new Dictionary<Controls, GameObject>();
 
-        readonly int _normal = Animator.StringToHash("Normal");
-         
         Controls _leftControl = Controls.AiControl;
         Controls _rightControl = Controls.AiControl;
 
@@ -55,11 +55,7 @@ namespace CeltaGames._Project._01_Scripts
             if (_currentSubmenuSide == Paddle.Right)
                 _rightControl = control;
         }
-
-        void Start()
-        {
-
-        }
+        
         
         void InitializeDictionaries()
         {
@@ -80,8 +76,15 @@ namespace CeltaGames._Project._01_Scripts
         {
             EnableOnlySelections(Paddle.Left);
             EnableOnlySelections(Paddle.Right);
-            //GameManager gets controls 
+            SetGameManagerControls();
         }
+
+        void SetGameManagerControls()
+        {
+            _gameManager.LetControl = _leftControl;
+            _gameManager.RightControl = _rightControl;
+        }
+
         public void SetCurrentSubmenuSide(bool isLeftSide)
         {
             _currentSubmenuSide = isLeftSide ? Paddle.Left : Paddle.Right;

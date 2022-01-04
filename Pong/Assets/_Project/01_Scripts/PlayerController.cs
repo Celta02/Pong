@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
-    public abstract class PlayerController : MonoBehaviour
+    public abstract class PlayerController : GameController
     {
         public event Action<Paddle> ControllerShoot = delegate { };
 
-        PaddleMover _mover;
         protected PlayerInput Controls;
 
-        protected void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             Controls = new PlayerInput();
-            _mover = GetComponent<PaddleMover>();
         }
+
         void OnEnable() => Controls.Enable();
         void OnDisable() => Controls.Disable();
 
@@ -24,7 +24,7 @@ namespace CeltaGames._Project._01_Scripts
         protected void Update()
         {
             if (Controls == null) return;
-            _mover.MovementInput = ReadValue();
+            MovePaddle(ReadValue());
         }
         protected abstract float ReadValue();
 
