@@ -43,12 +43,10 @@ namespace CeltaGames._Project._01_Scripts
            AddController(true);
            AddController(false);
 
-            if (!TryGetComponent(out PlayerController leftController)) return;
+            if (!_leftPaddle.TryGetComponent( out PlayerController leftController)) return;
             _shoot.SubscribeTo(leftController);
-            if (!TryGetComponent(out PlayerController rightController)) return;
+            if (!_rightPaddle.TryGetComponent(out PlayerController rightController)) return;
             _shoot.SubscribeTo(rightController);
-
-            Debug.Log($"Timescale is {Time.timeScale}");
         }
 
         void AddController(bool isLeft)
@@ -58,16 +56,40 @@ namespace CeltaGames._Project._01_Scripts
             switch (control)
             {
                 case Controls.AiControl:
-                    if (isLeft) _leftPaddle.AddComponent<AIController>(); 
-                    else _rightPaddle.AddComponent<AIController>();
+                    if (isLeft)
+                    {
+                        _leftPaddle.AddComponent<AIController>();
+                        _shoot.IsLeftAI = true;
+                    }
+                    else
+                    {
+                        _rightPaddle.AddComponent<AIController>();
+                        _shoot.IsRightAI = true;
+                    }
                     break;
                 case Controls.Wasd:
-                    if (isLeft) _leftPaddle.AddComponent<PlayerWasdController>(); 
-                    else _rightPaddle.AddComponent<PlayerWasdController>();
+                    if (isLeft)
+                    {
+                        _leftPaddle.AddComponent<PlayerWasdController>();
+                        _shoot.IsLeftAI = false;
+                    }
+                    else
+                    {
+                        _rightPaddle.AddComponent<PlayerWasdController>();
+                        _shoot.IsRightAI = false;
+                    }
                     break;
                 case Controls.Arrows:
-                    if (isLeft) _leftPaddle.AddComponent<PlayerArrowsController>(); 
-                    else _rightPaddle.AddComponent<PlayerArrowsController>();
+                    if (isLeft)
+                    {
+                        _leftPaddle.AddComponent<PlayerArrowsController>();
+                        _shoot.IsLeftAI = false;
+                    }
+                    else
+                    {
+                        _rightPaddle.AddComponent<PlayerArrowsController>();
+                        _shoot.IsRightAI = false;
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

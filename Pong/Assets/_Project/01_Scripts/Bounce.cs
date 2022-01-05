@@ -29,7 +29,6 @@ namespace CeltaGames._Project._01_Scripts
             if(!isPaddle)  newDir += new Vector3(newDir.x * _xBounceFactor, 0f, 0f);
             
             _rigidbody.velocity = newDir.normalized * _speed.CurrentSpeed;
-            
         }
 
     }
