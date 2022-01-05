@@ -3358,6 +3358,7 @@ MonoBehaviour:
   _wasdButton: {fileID: 790692746}
   _arrowButton: {fileID: 1751281510}
   _gameManager: {fileID: 1764467103}
+  _hints: {fileID: 1345133136}
 --- !u!114 &721240019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3696,6 +3697,7 @@ GameObject:
   - component: {fileID: 790692747}
   - component: {fileID: 790692746}
   - component: {fileID: 790692745}
+  - component: {fileID: 790692749}
   m_Layer: 5
   m_Name: WASD Keys
   m_TagString: Untagged
@@ -3861,6 +3863,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790692743}
   m_CullTransparentMesh: 1
+--- !u!114 &790692749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790692743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e8bcc7a36b4723b832a0d1f6d96be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controllerType: 1
 --- !u!1 &801415276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,6 +6878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345133135}
+  - component: {fileID: 1345133136}
   m_Layer: 5
   m_Name: SubMenu
   m_TagString: Untagged
@@ -6890,6 +6906,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1345133136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345133134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef33136b14e1433a8f17cf74eec68768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aiButton: {fileID: 2109168382}
+  _wasdButton: {fileID: 790692749}
+  _arrowButton: {fileID: 1751281513}
+  _hintContainer: {fileID: 453839827}
+  _aiHint: {fileID: 1314646231}
+  _wasdHint: {fileID: 820967203}
+  _arrowHint: {fileID: 1195873867}
 --- !u!1 &1381047558
 GameObject:
   m_ObjectHideFlags: 0
@@ -8577,6 +8612,7 @@ GameObject:
   - component: {fileID: 1751281511}
   - component: {fileID: 1751281510}
   - component: {fileID: 1751281509}
+  - component: {fileID: 1751281513}
   m_Layer: 5
   m_Name: Arrows Keys
   m_TagString: Untagged
@@ -8741,6 +8777,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751281507}
   m_CullTransparentMesh: 1
+--- !u!114 &1751281513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751281507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e8bcc7a36b4723b832a0d1f6d96be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controllerType: 2
 --- !u!1 &1764467099
 GameObject:
   m_ObjectHideFlags: 0
@@ -10903,6 +10952,7 @@ GameObject:
   - component: {fileID: 2109168380}
   - component: {fileID: 2109168379}
   - component: {fileID: 2109168378}
+  - component: {fileID: 2109168382}
   m_Layer: 5
   m_Name: AI Player
   m_TagString: Untagged
@@ -11067,6 +11117,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109168376}
   m_CullTransparentMesh: 1
+--- !u!114 &2109168382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109168376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e8bcc7a36b4723b832a0d1f6d96be2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controllerType: 0
 --- !u!1 &2128792737
 GameObject:
   m_ObjectHideFlags: 0

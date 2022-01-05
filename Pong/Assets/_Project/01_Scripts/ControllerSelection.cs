@@ -13,6 +13,8 @@ namespace CeltaGames._Project._01_Scripts
         [SerializeField] Button _arrowButton;
 
         [SerializeField] GameManager _gameManager;
+        [SerializeField] HintManager _hints;
+        
         ControllerSelectionVisuals _visuals;
         
         Paddle _currentSubmenuSide;
@@ -57,6 +59,7 @@ namespace CeltaGames._Project._01_Scripts
         {
             _visuals.ShowOnlySelections(Paddle.Left, _leftControl);
             _visuals.ShowOnlySelections(Paddle.Right, _rightControl);
+            _hints.DisableHints();
             SetGameManagerControls();
         }
 
