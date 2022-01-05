@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {

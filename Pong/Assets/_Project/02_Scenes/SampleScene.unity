@@ -3309,6 +3309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721240017}
   - component: {fileID: 721240018}
+  - component: {fileID: 721240019}
   m_Layer: 5
   m_Name: ControllerSelectionMenu
   m_TagString: Untagged
@@ -3353,19 +3354,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4270b16f6afa514e89c53fa527f8c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _aiButton: {fileID: 2109168379}
+  _wasdButton: {fileID: 790692746}
+  _arrowButton: {fileID: 1751281510}
+  _gameManager: {fileID: 1764467103}
+--- !u!114 &721240019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721240016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aff0dda4e204705835d817d899cfd1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _leftAISelection: {fileID: 1641616308}
   _leftWasdSelection: {fileID: 1162637918}
   _leftArrowsSelection: {fileID: 7096722}
   _rightAISelection: {fileID: 1207723773}
   _rightWasdSelection: {fileID: 1773666507}
   _rightArrowsSelection: {fileID: 390211417}
-  _aiButton: {fileID: 2109168379}
-  _wasdButton: {fileID: 790692746}
-  _arrowButton: {fileID: 1751281510}
   _aiArrow: {fileID: 1191874458}
   _wasdArrow: {fileID: 637921580}
   _arrowsArrow: {fileID: 1256470653}
-  _gameManager: {fileID: 1764467103}
 --- !u!1 &760405757
 GameObject:
   m_ObjectHideFlags: 0
@@ -10394,8 +10407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sideControl: {fileID: 1764467104}
-  _isLeftAI: 1
-  _isRightAI: 1
 --- !u!54 &2035690936
 Rigidbody:
   m_ObjectHideFlags: 0
