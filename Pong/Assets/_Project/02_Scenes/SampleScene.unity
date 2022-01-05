@@ -8804,6 +8804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf434b8bbac944aa9d8dbddb812070dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameElements: {fileID: 1782041875}
   _ball: {fileID: 2035690933}
   _leftPaddle: {fileID: 1579394102}
   _rightPaddle: {fileID: 176875718}
@@ -10375,7 +10376,7 @@ GameObject:
   - component: {fileID: 2035690942}
   m_Layer: 9
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10514,6 +10515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialSpeed: 6
+  _finalSpeed: 25
 --- !u!1 &2078376716
 GameObject:
   m_ObjectHideFlags: 0

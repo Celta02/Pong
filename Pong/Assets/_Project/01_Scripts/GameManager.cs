@@ -77,8 +77,8 @@ namespace CeltaGames._Project._01_Scripts
         public void Touch()
         {
             _numberOfTouches++;
-            if(_numberOfTouches > _touchesToIncreaseSpeed)
-                _speed.AugmentSpeed(_speedIncrease);
+            if (_numberOfTouches <= _touchesToIncreaseSpeed) return;
+            _speed.AugmentSpeed(_speedIncrease);
         }
 
         public void ResetTouches() => _numberOfTouches = 0;
