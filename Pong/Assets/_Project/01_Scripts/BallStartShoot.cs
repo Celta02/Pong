@@ -10,11 +10,11 @@ namespace CeltaGames._Project._01_Scripts
         BallSpeed _speed;
         Rigidbody _rigidbody;
         bool _canShoot;
-        [SerializeField] bool _isLeftAI;
-        [SerializeField] bool _isRightAI;
+        bool _isLeftAI;
+        bool _isRightAI;
 
         readonly List<PlayerController> _controllers = new List<PlayerController>();
-        readonly WaitForSeconds _wait = new WaitForSeconds(2f);
+        readonly WaitForSeconds _wait = new WaitForSeconds(1.5f);
 
         public bool IsLeftAI { set => _isLeftAI = value; }
         public bool IsRightAI {set => _isRightAI = value; }
@@ -47,7 +47,7 @@ namespace CeltaGames._Project._01_Scripts
             if (side == Paddle.Left) xDir = 1;
             if (side == Paddle.Right) xDir = -1;
                 
-            var direction = new Vector3(Random.value * xDir, 0f, Random.Range(-1f,1f)).normalized;
+            var direction = new Vector3(Random.value * xDir, 0f, Random.Range(-0.75f,0.75f)).normalized;
             _rigidbody.velocity = direction * _speed.InitialSpeed;
 
             _canShoot = false;
