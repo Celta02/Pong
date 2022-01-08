@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CeltaGames._Project._01_Scripts
 {
@@ -7,93 +6,29 @@ namespace CeltaGames._Project._01_Scripts
     {
         [SerializeField] GameObject _gameElements;
         [SerializeField] GameObject _ball;
-        [SerializeField] GameObject _leftPaddle;
-        [SerializeField] GameObject _rightPaddle;
-
         [SerializeField] int _touchesToIncreaseSpeed;
         [SerializeField] float _speedIncrease;
         
+        ControllerManager _controller;
         BallSpeed _speed;
-        BallStartShoot _shoot;
-        
         SideControl _sideControl;
         BallRespawn _respawn;
 
-        Controls _letControl;
-        Controls _rightControl;
-
         int _numberOfTouches;
-
-        public Controls LetControl { set => _letControl = value; }
-        public Controls RightControl { set => _rightControl = value; }
 
         void Awake()
         {
+            _controller = GetComponent<ControllerManager>();
             _respawn = GetComponent<BallRespawn>();
             _sideControl = GetComponent<SideControl>();
             _speed = _ball.GetComponent<BallSpeed>();
-            _shoot = _ball.GetComponent<BallStartShoot>();
         }
         
         public void StartGame()
         {
             _gameElements.SetActive(true);
            _respawn.Respawn(_sideControl.ControlSide);
-           
-           AddController(true);
-           AddController(false);
-
-            if (!_leftPaddle.TryGetComponent( out PlayerController leftController)) return;
-            _shoot.SubscribeTo(leftController);
-            if (!_rightPaddle.TryGetComponent(out PlayerController rightController)) return;
-            _shoot.SubscribeTo(rightController);
-        }
-
-        void AddController(bool isLeft)
-        {
-            var control = isLeft ? _letControl : _rightControl;
-            
-            switch (control)
-            {
-                case Controls.AiControl:
-                    if (isLeft)
-                    {
-                        _leftPaddle.AddComponent<AIController>();
-                        _shoot.IsLeftAI = true;
-                    }
-                    else
-                    {
-                        _rightPaddle.AddComponent<AIController>();
-                        _shoot.IsRightAI = true;
-                    }
-                    break;
-                case Controls.Wasd:
-                    if (isLeft)
-                    {
-                        _leftPaddle.AddComponent<PlayerWasdController>();
-                        _shoot.IsLeftAI = false;
-                    }
-                    else
-                    {
-                        _rightPaddle.AddComponent<PlayerWasdController>();
-                        _shoot.IsRightAI = false;
-                    }
-                    break;
-                case Controls.Arrows:
-                    if (isLeft)
-                    {
-                        _leftPaddle.AddComponent<PlayerArrowsController>();
-                        _shoot.IsLeftAI = false;
-                    }
-                    else
-                    {
-                        _rightPaddle.AddComponent<PlayerArrowsController>();
-                        _shoot.IsRightAI = false;
-                    }
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+           _controller.StartGame();
         }
 
         public void Touch()
@@ -107,5 +42,4 @@ namespace CeltaGames._Project._01_Scripts
         
         public void QuitGame() => Application.Quit();
     }
-    
 }

@@ -10,9 +10,9 @@ namespace CeltaGames._Project._01_Scripts
 
         [SerializeField] Button _aiButton;
         [SerializeField] Button _wasdButton;
-        [SerializeField] Button _arrowButton;
+        [SerializeField] Button _arrowButton; 
 
-        [SerializeField] GameManager _gameManager;
+        [SerializeField] ControllerManager _controllerManager;
         [SerializeField] HintManager _hints;
         
         ControllerSelectionVisuals _visuals;
@@ -65,8 +65,8 @@ namespace CeltaGames._Project._01_Scripts
 
         void SetGameManagerControls()
         {
-            _gameManager.LetControl = _leftControl;
-            _gameManager.RightControl = _rightControl;
+            _controllerManager.LeftControl = _leftControl;
+            _controllerManager.RightControl = _rightControl;
         }
 
         public void SetCurrentSubmenuSide(bool isLeftSide)
